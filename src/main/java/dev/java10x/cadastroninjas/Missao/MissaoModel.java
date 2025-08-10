@@ -2,11 +2,17 @@ package dev.java10x.cadastroninjas.Missao;
 
 import dev.java10x.cadastroninjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name = "tb_missao")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class MissaoModel {
 
     @Id
