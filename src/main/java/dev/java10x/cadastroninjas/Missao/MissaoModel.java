@@ -1,16 +1,16 @@
 package dev.java10x.cadastroninjas.Missao;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.java10x.cadastroninjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Table(name = "tb_missao")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class MissaoModel {
@@ -24,5 +24,6 @@ public class MissaoModel {
     private String dificuldade;
 
     @OneToMany(mappedBy = "missoes")
+    @JsonIgnore
     private List<NinjaModel> ninjas;
 }
