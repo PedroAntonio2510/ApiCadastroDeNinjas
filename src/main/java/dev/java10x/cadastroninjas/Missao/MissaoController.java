@@ -11,17 +11,17 @@ public class MissaoController {
         return "Missoes listadas";
     }
 
-    @PostMapping
+    @PostMapping("/criar")
     public String criarMissao() {
         return "Missao criada com sucesso";
     }
 
-    @PutMapping("/")
+    @PutMapping("/alterarID")
     public String alterarMissao() {
         return "Missao alterada com sucesso";
     }
 
-    @DeleteMapping("/deletar")
+    @DeleteMapping("/deletarID")
     public String deletarMissao() {
         return "Missao deletada com sucesso";
     }
