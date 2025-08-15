@@ -30,6 +30,9 @@ public class MissaoService {
         return missaoModel.orElse(null);
     }
 
-
+    // Deleta missao por ID
+    public void deletarMissaoPorId(Long id) {
+        missoesRepository.deleteById(id);
+    }
 }
 
