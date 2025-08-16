@@ -1,5 +1,6 @@
 package dev.java10x.cadastroninjas.Missao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class MissaoController {
     }
 
     @PostMapping("/criar")
-    public MissaoModel criarMissao(@RequestBody MissaoModel missao) {
+    public MissaoDTO criarMissao(@RequestBody MissaoDTO missao) {
         return missaoService.criarMissao(missao);
     }
 

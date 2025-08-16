@@ -2,13 +2,12 @@ package dev.java10x.cadastroninjas.Ninjas;
 
 import dev.java10x.cadastroninjas.Missao.MissaoModel;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "tb_cadastro")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class NinjaModel {
@@ -28,6 +27,9 @@ public class NinjaModel {
 
     @Column(name = "idade")
     private int idade;
+
+    @Column(name = "rank")
+    private String rank;
 
     @ManyToOne
     @JoinColumn(name = "missoes_id")
