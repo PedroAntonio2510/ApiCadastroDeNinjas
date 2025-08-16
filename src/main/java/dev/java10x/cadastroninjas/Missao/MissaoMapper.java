@@ -24,7 +24,7 @@ public class MissaoMapper {
         missaoModel.setId(missaoDTO.getId());
         missaoModel.setNome(missaoDTO.getNome());
         missaoModel.setDificuldade(missaoDTO.getDificuldade());
-
+        missaoModel.setRecompensa(missaoDTO.getRecompensa());
 
         return missaoModel;
     }
@@ -37,6 +37,7 @@ public class MissaoMapper {
         missaoDTO.setId(missaoModel.getId());
         missaoDTO.setNome(missaoModel.getNome());
         missaoDTO.setDificuldade(missaoModel.getDificuldade());
+        missaoDTO.setRecompensa(missaoModel.getRecompensa());
 
         return missaoDTO;
     }

@@ -5,6 +5,7 @@ import dev.java10x.cadastroninjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -26,4 +27,7 @@ public class MissaoModel {
     @OneToMany(mappedBy = "missoes")
     @JsonIgnore
     private List<NinjaModel> ninjas;
+
+    @Column(name = "recompensa")
+    private BigDecimal recompensa;
 }
