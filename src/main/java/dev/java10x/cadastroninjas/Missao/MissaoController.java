@@ -16,12 +16,12 @@ public class MissaoController {
     }
 
     @GetMapping("/listar")
-    public List<MissaoModel> listarMissoes() {
+    public List<MissaoDTO> listarMissoes() {
         return missaoService.listarMissoes();
     }
 
     @GetMapping("/listar/{id}")
-    public MissaoModel listarMissaoPorId(@PathVariable Long id) {
+    public MissaoDTO listarMissaoPorId(@PathVariable Long id) {
         return missaoService.listarMissaoPorId(id);
     }
 

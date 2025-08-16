@@ -24,14 +24,17 @@ public class MissaoService {
     }
 
     // Listar missoes
-    public List<MissaoModel> listarMissoes() {
-        return missoesRepository.findAll();
+    public List<MissaoDTO> listarMissoes() {
+        List<MissaoModel> missoes = missoesRepository.findAll();
+        return missoes.stream()
+                .map(missaoMapper::map)
+                .toList();
     }
 
     // Lista missao por id
-    public MissaoModel listarMissaoPorId(Long id) {
-        Optional<MissaoModel> missaoModel = missoesRepository.findById(id);
-        return missaoModel.orElse(null);
+    public MissaoDTO listarMissaoPorId(Long id) {
+        Optional<MissaoModel> missaoPorId = missoesRepository.findById(id);
+        return missaoPorId.map(missaoMapper::map).orElse(null);
     }
 
     // Deleta missao por ID
