@@ -9,14 +9,18 @@ import java.util.Optional;
 public class MissaoService {
 
     private MissoesRepository missoesRepository;
+    private MissaoMapper missaoMapper;
 
-    public MissaoService(MissoesRepository missoesRepository) {
+    public MissaoService(MissoesRepository missoesRepository, MissaoMapper missaoMapper) {
         this.missoesRepository = missoesRepository;
+        this.missaoMapper = missaoMapper;
     }
 
-    // Cria a missao
-    public MissaoModel criarMissao(MissaoModel missao) {
-        return missoesRepository.save(missao);
+    // Criar missao
+    public MissaoDTO criarMissao(MissaoDTO missaoDTO) {
+        MissaoModel missao = missaoMapper.map(missaoDTO);
+        missao = missoesRepository.save(missao);
+        return missaoMapper.map(missao);
     }
 
     // Listar missoes
