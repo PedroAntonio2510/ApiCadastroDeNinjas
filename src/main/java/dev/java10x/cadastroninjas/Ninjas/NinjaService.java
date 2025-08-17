@@ -1,6 +1,9 @@
 package dev.java10x.cadastroninjas.Ninjas;
 
+import org.springframework.boot.autoconfigure.graphql.GraphQlProperties;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +20,7 @@ public class NinjaService {
     }
 
     // Listar todos os ninjas
-    public List<NinjaDTO> listarNinjas(){
+    public List<NinjaDTO> listarNinjas() {
         List<NinjaModel> ninjas = ninjaRepository.findAll();
 
         return ninjas.stream()
@@ -28,7 +31,7 @@ public class NinjaService {
     // Listar ninja por id
     public NinjaDTO listaNinjaPorId(Long id) {
         Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(id);
-        return ninjaPorId.map(ninjaMapper::map).orElse(null);
+        return ninjaPorId.map(ninjaMapper::map).orElseThrow(null);
     }
 
     //Cria um novo ninja
@@ -39,19 +42,18 @@ public class NinjaService {
     }
 
     // Deletar o Ninja
-    public void deletarNinjaPorId(Long id){
+    public void deletarNinjaPorId(Long id) {
+        ninjaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Ninja não encontrado"));
         ninjaRepository.deleteById(id);
     }
 
     //Atualizar Ninja
     public NinjaDTO atualizarNinja(Long id, NinjaDTO ninjaDTO) {
-        Optional<NinjaModel> ninjaExistente = ninjaRepository.findById(id);
-        if (ninjaExistente.isPresent()) {
-            NinjaModel ninjaAtualizado = ninjaMapper.map(ninjaDTO);
-            ninjaAtualizado.setId(id);
-            NinjaModel ninjaSalvo = ninjaRepository.save(ninjaAtualizado);
-            return ninjaMapper.map(ninjaSalvo);
-        }
-        return null;
+        ninjaRepository.findById(id).orElseThrow(() -> new ResponseStatusException(     HttpStatus.NOT_FOUND));
+        NinjaModel ninjaAtualizado = ninjaMapper.map(ninjaDTO);
+        ninjaAtualizado.setId(id);
+        NinjaModel ninjaSalvo = ninjaRepository.save(ninjaAtualizado);
+        return ninjaMapper.map(ninjaSalvo);
     }
 }
