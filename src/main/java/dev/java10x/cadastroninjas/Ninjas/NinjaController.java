@@ -52,7 +52,8 @@ public class NinjaController {
     public ResponseEntity<String> alterarNinjaPorId(@PathVariable Long id,
                                                 @RequestBody NinjaDTO ninjaAtualizado){
         NinjaDTO ninjaNovo = ninjaService.atualizarNinja(id, ninjaAtualizado);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Ninja atualizado com sucesso: " + ninjaNovo.getNome() + " (ID): " + ninjaNovo.getId());
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Ninja atualizado com sucesso: " + ninjaNovo.getNome() + " (ID): " + ninjaNovo.getId());
     }
 
         // Deletar Ninja(DELETE)

@@ -1,6 +1,8 @@
 package dev.java10x.cadastroninjas.Missao;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +41,19 @@ public class MissaoService {
 
     // Deleta missao por ID
     public void deletarMissaoPorId(Long id) {
+        missoesRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Missao nao encontrada"));
         missoesRepository.deleteById(id);
     }
+
+    public MissaoDTO atualizarMissao(Long id, MissaoDTO missaoDTO) {
+        missoesRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        MissaoModel missaoAtualizada = missaoMapper.map(missaoDTO);
+        missaoAtualizada.setId(id);
+        MissaoModel missaoSalva = missoesRepository.save(missaoAtualizada);
+        return missaoMapper.map(missaoSalva);
+    }
+
 }
 

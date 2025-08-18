@@ -1,6 +1,5 @@
 package dev.java10x.cadastroninjas.Ninjas;
 
-import org.springframework.boot.autoconfigure.graphql.GraphQlProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -31,7 +30,7 @@ public class NinjaService {
     // Listar ninja por id
     public NinjaDTO listaNinjaPorId(Long id) {
         Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(id);
-        return ninjaPorId.map(ninjaMapper::map).orElseThrow(null);
+        return ninjaPorId.map(ninjaMapper::map).orElse(null);
     }
 
     //Cria um novo ninja
@@ -50,7 +49,7 @@ public class NinjaService {
 
     //Atualizar Ninja
     public NinjaDTO atualizarNinja(Long id, NinjaDTO ninjaDTO) {
-        ninjaRepository.findById(id).orElseThrow(() -> new ResponseStatusException(     HttpStatus.NOT_FOUND));
+        ninjaRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         NinjaModel ninjaAtualizado = ninjaMapper.map(ninjaDTO);
         ninjaAtualizado.setId(id);
         NinjaModel ninjaSalvo = ninjaRepository.save(ninjaAtualizado);
