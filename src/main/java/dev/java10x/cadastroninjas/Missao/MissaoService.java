@@ -10,8 +10,8 @@ import java.util.Optional;
 @Service
 public class MissaoService {
 
-    private MissoesRepository missoesRepository;
-    private MissaoMapper missaoMapper;
+    private final MissoesRepository missoesRepository;
+    private final MissaoMapper missaoMapper;
 
     public MissaoService(MissoesRepository missoesRepository, MissaoMapper missaoMapper) {
         this.missoesRepository = missoesRepository;

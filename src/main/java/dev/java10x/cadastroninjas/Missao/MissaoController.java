@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("missoes")
 public class MissaoController {
 
-    private MissaoService missaoService;
+    private final MissaoService missaoService;
 
     public MissaoController(MissaoService missaoService) {
         this.missaoService = missaoService;
