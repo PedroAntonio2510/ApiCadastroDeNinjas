@@ -1,7 +1,5 @@
 package dev.java10x.cadastroninjas.Ninjas;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +27,7 @@ public class NinjaControllerUi {
     @GetMapping("/deletar/{id}")
     public String deletarNinjaPorId(@PathVariable Long id) {
         ninjaService.deletarNinjaPorId(id);
-        return "redirect:/ninja/ui/listar";
+        return "redirect:/ninjas/ui/listar";
     }
 
     @GetMapping("/listar/{id}")
