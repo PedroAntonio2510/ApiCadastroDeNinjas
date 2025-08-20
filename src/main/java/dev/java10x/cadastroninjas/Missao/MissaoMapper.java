@@ -1,20 +1,9 @@
 package dev.java10x.cadastroninjas.Missao;
 
-import dev.java10x.cadastroninjas.Ninjas.NinjaDTO;
-import dev.java10x.cadastroninjas.Ninjas.NinjaMapper;
-import dev.java10x.cadastroninjas.Ninjas.NinjaModel;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class MissaoMapper {
-
-    private NinjaMapper ninjaMapper;
-
-    public MissaoMapper(NinjaMapper ninjaMapper) {
-        this.ninjaMapper = ninjaMapper;
-    }
 
     public MissaoModel map(MissaoDTO missaoDTO) {
         if (missaoDTO == null) {
