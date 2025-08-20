@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>Detalhes do Ninja</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
@@ -31,7 +31,7 @@
             display: block;
             margin: 0 auto 20px;
             width: 100px;
-            height:100px;
+            height: 100px;
         }
 
         p {
@@ -50,7 +50,8 @@
             margin-top: 10px;
         }
 
-        th, td {
+        th,
+        td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #ddd;
@@ -82,31 +83,33 @@
         }
     </style>
 </head>
-<body>
-<h1>Detalhes do Ninja</h1>
-<div>
-    <img th:src="${ninja.img_url}" alt="${ninja.nome}" width="200" />
-    <h2 th:text="${ninja.nome}"></h2>
-    <p><strong>Email:</strong> <span th:text="${ninja.email}"></span></p>
-    <p><strong>Idade:</strong> <span th:text="${ninja.idade}"></span></p>
-    <p><strong>Rank:</strong> <span th:text="${ninja.rank}"></span></p>
 
-    <h3>Missões:</h3>
-    <table>
-        <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Dificuldade</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="missao : ${ninja.missoes}">
-            <td th:text="${missao.nome}"></td>
-            <td th:text="${missao.dificuldade}"></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<a href="/ninjas/ui/listar">Voltar para a lista de ninjas</a>
+<body>
+    <h1>Detalhes do Ninja</h1>
+    <div>
+        <img th:src="${ninja.img_url}" alt="${ninja.nome}" width="200" />
+        <h2 th:text="${ninja.nome}"></h2>
+        <p><strong>Email:</strong> <span th:text="${ninja.email}"></span></p>
+        <p><strong>Idade:</strong> <span th:text="${ninja.idade}"></span></p>
+        <p><strong>Rank:</strong> <span th:text="${ninja.rank}"></span></p>
+
+        <h3>Missões:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Dificuldade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="missao : ${ninja.missoes}">
+                    <td th:text="${missao.nome}"></td>
+                    <td th:text="${missao.dificuldade}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="/ninjas/ui/listar">Voltar para a lista de ninjas</a>
 </body>
+
 </html>

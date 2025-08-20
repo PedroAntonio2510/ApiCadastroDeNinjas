@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Tabela de Ninjas</title>
@@ -24,7 +25,8 @@
             background-color: #fff;
         }
 
-        th, td {
+        th,
+        td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #ddd;
@@ -68,45 +70,48 @@
     </style>
 
 </head>
+
 <body>
-<h1>Lista de ninjas</h1>
-<a class="btn-adicionar" th:href="@{/ninjas/ui/adicionar}">Adicionar Novo Ninja</a>
-<table>
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Imagem</th>
-        <th>Nome</th>
-        <th>Idade</th>
-        <th>Email</th>
-        <th>Rank</th>
-        <th>Missoes</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each ="ninja: ${ninjas}">
-        <td th:text="${ninja.id}"></td>
-        <td> <img th:src="${ninja.img_url}" width="100" height="100"></td>
-        <td th:text="${ninja.nome}"></td>
-        <td th:text="${ninja.idade}"></td>
-        <td th:text="${ninja.email}"></td>
-        <td th:text="${ninja.rank}"></td>
-        <td>
-            <span th:if="${ninja.missoes}"><span th:text="${ninja.missoes.nome}"></span>, Dificuldade: <span th:text="${ninja.missoes.dificuldade}"></span></span>
-            <span th:if="${ninja.missoes == null}">Sem Missões cadastradas para o ninja</span>
-        </td>
+    <h1>Lista de ninjas</h1>
+    <a class="btn-adicionar" th:href="@{/ninjas/ui/adicionar}">Adicionar Novo Ninja</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Imagem</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Email</th>
+                <th>Rank</th>
+                <th>Missoes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="ninja: ${ninjas}">
+                <td th:text="${ninja.id}"></td>
+                <td> <img th:src="${ninja.img_url}" width="100" height="100"></td>
+                <td th:text="${ninja.nome}"></td>
+                <td th:text="${ninja.idade}"></td>
+                <td th:text="${ninja.email}"></td>
+                <td th:text="${ninja.rank}"></td>
+                <td>
+                    <span th:if="${ninja.missoes}"><span th:text="${ninja.missoes.nome}"></span>, Dificuldade: <span
+                            th:text="${ninja.missoes.dificuldade}"></span></span>
+                    <span th:if="${ninja.missoes == null}">Sem Missões cadastradas para o ninja</span>
+                </td>
 
-        <td>
-            <a th:href="@{/ninjas/ui/listar/{id}(id=${ninja.id})}">Ver Detalhes</a>
-            <a th:href="@{/ninjas/ui/#/{id}(id=${ninja.id})}">Alterar</a>
-            <a th:href="@{/ninjas/ui/deletar/{id}(id=${ninja.id})}">Deletar</a>
-        </td>
+                <td>
+                    <a th:href="@{/ninjas/ui/listar/{id}(id=${ninja.id})}">Ver Detalhes</a>
+                    <a th:href="@{/ninjas/ui/#/{id}(id=${ninja.id})}">Alterar</a>
+                    <a th:href="@{/ninjas/ui/deletar/{id}(id=${ninja.id})}">Deletar</a>
+                </td>
 
-    </tr>
-    </tbody>
-</table>
+            </tr>
+        </tbody>
+    </table>
 
 
 
 </body>
+
 </html>

@@ -11,17 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/missoes/ui")
 public class MissaoControllerUi {
 
-        private final MissaoService missaoService;
+    private final MissaoService missaoService;
 
-        public MissaoControllerUi(MissaoService missaoService) {
-            this.missaoService = missaoService;
-        }
+    public MissaoControllerUi(MissaoService missaoService) {
+        this.missaoService = missaoService;
+    }
 
-        @GetMapping("/listar")
-        public String listarMissoes(Model model) {
-            List<MissaoDTO> missoes = missaoService.listarMissoes();
-            model.addAttribute("missoes", missoes);
-            return "listarMissoes";
-        }
+    @GetMapping("/listar")
+    public String listarMissoes(Model model) {
+        List<MissaoDTO> missoes = missaoService.listarMissoes();
+        model.addAttribute("missoes", missoes);
+        return "listarMissoes";
+    }
+
     
+
 }
