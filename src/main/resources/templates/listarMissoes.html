@@ -219,11 +219,10 @@
                 <div class="logo">🚀</div>
                 <div>
                     <h1>Missões</h1>
-                    <div class="muted">Lista estática (ID, Nome, Dificuldade) — pronta para Thymeleaf.</div>
                 </div>
             </div>
             <div class="actions">
-                <a href="/missoes/novo" class="btn btn-primary">+ Nova Missão</a>
+                <a class="btn btn-primary" th:href="@{/missoes/ui/adicionar}">Adicionar Nova Missao</a>
             </div>
         </header>
 
@@ -238,7 +237,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Exemplo estático + atributos Thymeleaf para você ligar ao backend -->
                     <tr th:each="m : ${missoes}">
                         <td data-label="ID"><span th:text="${m.id}"></span></td>
                         <td data-label="Nome"><strong th:text="${m.nome}"></strong></td>
@@ -248,8 +246,8 @@
                         <td data-label="Ações">
                             <div class="btn-row">
                                 <a class="btn-ghost" th:href="@{/missoes/{id}/editar(id=${m.id})}">Alterar</a>
-                                <a class="btn" th:href="@{/missoes/{id}(id=${m.id})}">Ver detalhes</a>
-                                <a class="btn-outline-danger" th:href="@{/missoes/{id}/excluir(id=${m.id})}">Excluir</a>
+                                <a class="btn" th:href="@{/missoes/ui/listar/{id}(id=${m.id})}">Ver detalhes</a>
+                                <a class="btn-outline-danger" th:href="@{/missoes/ui/deletar/{id}(id=${m.id})}">Excluir</a>
                             </div>
                         </td>
                     </tr>

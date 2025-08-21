@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 @Controller
 @RequestMapping("/ninjas/ui")
@@ -34,7 +36,7 @@ public class NinjaControllerUi {
     public String listarNinjasPorId(@PathVariable Long id, Model model) {
         NinjaDTO ninja = ninjaService.listaNinjaPorId(id);
         if (ninja != null) {
-            model.addAttribute("ninjas", ninja);
+            model.addAttribute("ninja", ninja);
             return "detalhesNinja";
         }
         model.addAttribute("mensagem", "Ninja não encontrado");
@@ -53,6 +55,4 @@ public class NinjaControllerUi {
         redirectAttributes.addFlashAttribute("mensagem", "Ninja cadastrado com sucesso!");
         return "redirect:/ninjas/ui/listar";
     }
-
-
 }
