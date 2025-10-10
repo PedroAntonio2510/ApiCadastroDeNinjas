@@ -1,5 +1,6 @@
-package dev.java10x.cadastroninjas.User;
+package dev.java10x.cadastroninjas.Auth;
 
+import dev.java10x.cadastroninjas.User.*;
 import dev.java10x.cadastroninjas.config.TokenService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

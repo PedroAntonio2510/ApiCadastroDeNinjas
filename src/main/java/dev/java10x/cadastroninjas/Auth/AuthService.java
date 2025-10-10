@@ -1,5 +1,6 @@
-package dev.java10x.cadastroninjas.User;
+package dev.java10x.cadastroninjas.Auth;
 
+import dev.java10x.cadastroninjas.User.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
