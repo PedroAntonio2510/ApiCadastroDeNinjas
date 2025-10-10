@@ -1,6 +1,8 @@
 package dev.java10x.cadastroninjas.Ninjas;
 
+import dev.java10x.cadastroninjas.config.JwtUserData;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -49,6 +51,7 @@ public class NinjaService {
 
     //Atualizar Ninja
     public NinjaDTO atualizarNinja(Long id, NinjaDTO ninjaDTO) {
+        //JwtUserData principal = (JwtUserData) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ninjaRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         NinjaModel ninjaAtualizado = ninjaMapper.map(ninjaDTO);
         ninjaAtualizado.setId(id);
