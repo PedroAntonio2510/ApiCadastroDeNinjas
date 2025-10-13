@@ -2,6 +2,7 @@ package dev.java10x.cadastroninjas.Missao;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class MissaoController {
         return ResponseEntity.ok(missoes);
     }
 
+//    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> listarMissaoPorId(@PathVariable Long id) {
         MissaoDTO missao = missaoService.listarMissaoPorId(id);

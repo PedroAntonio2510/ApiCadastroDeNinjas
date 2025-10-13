@@ -6,6 +6,7 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import dev.java10x.cadastroninjas.User.User;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
@@ -23,6 +24,7 @@ public class TokenService {
                 .withSubject(user.getEmail())
                 .withClaim("userId", user.getId())
                 .withClaim("name", user.getName())
+                .withClaim("role", user.getRole())
                 .withExpiresAt(Instant.now().plusSeconds(86400))
                 .withIssuedAt(Instant.now())
                 .withIssuer("api-cadastro-de-ninjas")
@@ -41,6 +43,7 @@ public class TokenService {
                     .id(jwt.getClaim("userId").asLong())
                     .name(jwt.getClaim("name").asString())
                     .email(jwt.getSubject())
+                    .role(jwt.getClaim("role").asString())
                     .build());
         } catch (JWTVerificationException ex) {
             return Optional.empty();
